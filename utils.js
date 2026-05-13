@@ -700,12 +700,13 @@ function message(api, event) {
                 },
                 unsend: async (messageID, callback) =>
                         await api.unsendMessage(messageID, callback),
-                reaction: async (emoji, messageID, callback) => {
+                reaction: async (emoji, messageID, event.threadID, callback) => {
                         try {
                                 global.statusAccountBot = "good";
                                 return await api.setMessageReaction(
                                         emoji,
                                         messageID,
+                                        event.threadID,
                                         callback,
                                         true,
                                 );
